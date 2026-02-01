@@ -1,50 +1,39 @@
-[![Company](https://www.arjancodes.com/_astro/logo.DSZjG3lW.png)](https://www.arjancodes.com)
+Starting the server:
+
+uv run uvicorn app.main:app --reload
+
+Example requests:
+
+Here’s a set of simple curl examples you can use to interact with your FastAPI app once it’s running (default at http://localhost:8000):
+
+1️⃣ Create a User
+
+curl -X POST "http://localhost:8000/api/v1/users" \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Ada Lovelace"}'
 
 
-![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCVhQ2NnY5Rskt6UjCUkJ_DA)
-![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/arjancodes)
+2️⃣ Get All Users
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
-<!-- omit in toc -->
-## Table of Contents
-- [About](#about)
-- [Installation](#installation)
-- [Maintainers](#maintainers)
-- [Links](#links)
-
-## About
-
-This repository contains all the code examples that I use in my YouTube videos. You'll find the link to the code in the description of each of the videos on YouTube. If you're a regular watcher, you can simply clone the repository and check out the code for the latest video. The main branch will always contain the latest code.
-
-If you have any suggestion to improve this repository, feel free to open an issue or a pull request.
+curl -X GET "http://localhost:8000/api/v1/users"
 
 
+3️⃣ Get a User by ID
+
+(Replace 1 with the actual ID from the create response)
+
+curl -X GET "http://localhost:8000/api/v1/users/1"
 
 
-## Installation
-To clone this repository, run the following command:
+4️⃣ Update a User
 
-```bash
-git clone https://github.com/arjancodes/examples.git
-```
-Navigate to the cloned repository:
-
-```bash
-cd examples
-```
-
-Ensure you have the necessary dependencies installed for each example. Each example should have atleast a `pyproject.toml` in which you can use poetry to create a virtual enviroment for that specific example.
-
-## Maintainers
+curl -X PUT "http://localhost:8000/api/v1/users/1" \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Grace Hopper"}'
 
 
+⸻
 
-* Arjan Egges, Project Maintainer: [@egges](https://github.com/egges)
-* Andreas Bergman, Developer & Educational Specialist: [@ABDreos](https://github.com/Anber96)
+5️⃣ Delete a User
 
-## Links
-
-[![Twitter](https://go-skill-icons.vercel.app/api/icons?i=twitter)](https://twitter.com/arjancodes)
-[![Twitter](https://go-skill-icons.vercel.app/api/icons?i=youtube)](https://www.youtube.com/c/arjancodes)
-[![Twitter](https://go-skill-icons.vercel.app/api/icons?i=linkedin)](https://www.linkedin.com/company/arjancodes)
+curl -X DELETE "http://localhost:8000/api/v1/users/1"
